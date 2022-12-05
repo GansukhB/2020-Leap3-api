@@ -7,6 +7,7 @@ beforeAll(async () => {
     process.env.MONGODB_URL = "mongodb://localhost:27017/leap3_test";
   }
   if (mongoose.connection.readyState === 0) {
+    console.log(process.env.MONGODB_URL);
     await mongoose.connect(process.env.MONGODB_URL, {
       useUnifiedTopology: true,
     });
