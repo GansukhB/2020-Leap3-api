@@ -19,9 +19,6 @@ beforeAll(async () => {
     });
   }
 });
-afterAll(async () => {
-  await mongoose.connection.close();
-});
 
 test("Test root path", async () => {
   const res = await request(app).get("/");
@@ -42,4 +39,8 @@ test("Test user registrations", async () => {
   expect(res.statusCode).toBe(200);
   const resData = JSON.parse(res.text);
   expect(resData.message).toBe("Saved");
+});
+
+afterAll(async () => {
+  await mongoose.connection.close();
 });
