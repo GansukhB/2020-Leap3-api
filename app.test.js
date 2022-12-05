@@ -6,6 +6,7 @@ beforeAll(async () => {
   if (!process.env.MONGODB_URL || process.env.CI) {
     process.env.MONGODB_URL = "mongodb://localhost:27017/leap3_test";
   }
+  console.log("before all", process.env.MONGODB_URL);
   if (mongoose.connection.readyState === 0) {
     console.log(process.env.MONGODB_URL);
     await mongoose.connect(process.env.MONGODB_URL, {

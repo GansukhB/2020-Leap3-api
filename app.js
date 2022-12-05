@@ -10,6 +10,7 @@ const postRouter = require("./routes/postRoute");
 dotenv.config(".env");
 
 const app = express();
+//
 app.use(fileUpload());
 app.use("/uploads/", express.static(path.join(__dirname, "uploads")));
 
