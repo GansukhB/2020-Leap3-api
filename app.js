@@ -14,7 +14,7 @@ app.use(fileUpload());
 app.use("/uploads/", express.static(path.join(__dirname, "uploads")));
 
 const MONGODB_URL = process.env.MONGODB_URL;
-
+//
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
