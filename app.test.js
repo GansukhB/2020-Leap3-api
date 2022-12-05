@@ -9,7 +9,7 @@ beforeAll(async () => {
   console.log("before all", process.env.MONGODB_URL);
   if (mongoose.connection.readyState === 0) {
     console.log(process.env.MONGODB_URL);
-    await mongoose.connect(process.env.MONGODB_URL, {
+    mongoose.connect(process.env.MONGODB_URL, {
       useUnifiedTopology: true,
     });
     const connection = mongoose.connection;
