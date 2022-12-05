@@ -7,7 +7,7 @@ on:
 
 env:
   CI: true
-  MONGODB_URL: mongodb://supercharge:secret@localhost:27017/test
+  MONGODB_URL: mongodb://localhost:27017/test
 
 jobs:
   build_and_test:
@@ -19,12 +19,9 @@ jobs:
         with:
           node-version: "14"
       - name: Start MongoDB
-        uses: supercharge/mongodb-github-action@1.8.0
+        uses: supercharge/mongodb-github-action@1.7.0
         with:
           mongodb-version: "4.4"
-          mongodb-username: supercharge
-          mongodb-password: secret
-          mongodb-port: 27017
 
       - name: Node dependency install
         run: yarn install
