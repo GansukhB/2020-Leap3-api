@@ -49,7 +49,7 @@ app.patch("/profile/:id", async (req, res) => {
 });
 app.post("/profile", (req, res) => {
   const { username, password, name, email, phone, gender, location } = req.body;
-  //
+
   const user = new User({
     username,
     password,
