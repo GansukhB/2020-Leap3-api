@@ -1,6 +1,7 @@
 const app = require("./app");
 const request = require("supertest");
 const mongoose = require("mongoose");
+const User = require("./models/User");
 
 beforeAll(async () => {
   if (!process.env.MONGODB_URL || process.env.CI) {
@@ -18,6 +19,7 @@ beforeAll(async () => {
       console.log("Connected to test server");
     });
   }
+  await User.deleteMany();
 });
 
 test("Test root path", async () => {
@@ -42,5 +44,6 @@ test("Test user registrations", async () => {
 });
 
 afterAll(async () => {
+  await User.deleteMany();
   await mongoose.connection.close();
 });
