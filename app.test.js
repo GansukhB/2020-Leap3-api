@@ -3,7 +3,7 @@ const request = require("supertest");
 const mongoose = require("mongoose");
 
 beforeAll(async () => {
-  if (!process.env.MONGODB_URL) {
+  if (!process.env.MONGODB_URL || process.env.CI) {
     process.env.MONGODB_URL = "mongodb://localhost:27017/leap3_test";
   }
   if (mongoose.connection.readyState === 0) {
