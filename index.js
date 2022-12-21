@@ -1,7 +1,8 @@
 const app = require("./app");
+const mongoose = require("mongoose");
 const port = 3000;
 
-if (MONGODB_URL) mongoose.connect(MONGODB_URL);
+if (process.env.MONGODB_URL) mongoose.connect(process.env.MONGODB_URL);
 
 const connection = mongoose.connection;
 
@@ -10,5 +11,6 @@ connection.once("open", () => {
 });
 
 app.listen(port, () => {
+  console.log(process.env.MONGODB_URL);
   console.log(`Example app listening on port ${port}`);
 });

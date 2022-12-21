@@ -11,7 +11,7 @@
     "mongoose": "^6.5.0"
   },
   "scripts": {
-    "start": "npx nodemon server.js"
+    "start": "npx nodemon index.js"
   },
   "devDependencies": {
     "jest": "^29.3.1",

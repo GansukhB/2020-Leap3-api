@@ -18,11 +18,17 @@ const MONGODB_URL = process.env.MONGODB_URL;
 //
 app.use(express.json());
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  console.log(MONGODB_URL);
+  res.send("Hello World!" + MONGODB_URL);
 });
 
 app.use(userRouter);
 app.use(postRouter);
+
+app.get("/users", async (req, res) => {
+  const users = await User.find();
+  res.send(users);
+});
 
 app.get("/profile/:id", async (req, res) => {
   const id = req.params.id;

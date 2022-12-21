@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:4.4
+    restart: always
+    ports: 
+      - 27017:27017
+
+  api:
+    image: sample-express-app
+    build: .
+    links:
+      - mongo
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URL=mongodb://mongo:27017/leapApi
