@@ -10,18 +10,25 @@ const postRouter = require("./routes/postRoute");
 dotenv.config(".env");
 
 const app = express();
+//
 app.use(fileUpload());
 app.use("/uploads/", express.static(path.join(__dirname, "uploads")));
 
 const MONGODB_URL = process.env.MONGODB_URL;
-
+//
 app.use(express.json());
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  console.log(MONGODB_URL);
+  res.send("Hello World!" + MONGODB_URL);
 });
 
 app.use(userRouter);
 app.use(postRouter);
+
+app.get("/users", async (req, res) => {
+  const users = await User.find();
+  res.send(users);
+});
 
 app.get("/profile/:id", async (req, res) => {
   const id = req.params.id;
@@ -49,7 +56,7 @@ app.patch("/profile/:id", async (req, res) => {
 });
 app.post("/profile", (req, res) => {
   const { username, password, name, email, phone, gender, location } = req.body;
-
+  //
   const user = new User({
     username,
     password,

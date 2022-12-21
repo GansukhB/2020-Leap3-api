@@ -1,0 +1,13 @@
+####
+POST http://localhost:3000/profile
+Content-Type: application/json
+
+{ "username": "aaaa", 
+"password": "paaasss", 
+"name": "Gansukh", 
+"email": "test@test.test", 
+"phone": 12345677, "gender": "M", "location": "Mongolia" }
+
+
+###
+GET http://localhost:3000/users
